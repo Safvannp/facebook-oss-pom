@@ -1,0 +1,31 @@
+<dependency>
+    <groupId>com.facebook.business.sdk</groupId>
+    <artifactId>facebook-java-business-sdk</artifactId> 
+    <version>[8.0.3,)</version>
+</dependency>
+import com.facebook.business.sdk.APIContext;
+import com.facebook.business.sdk.APINodeList;
+import com.facebook.business.sdk.AdAccount;
+import com.facebook.business.sdk.Campaign;
+
+public class TestFBJavaSDK
+{
+    public static final APIContext context = new APIContext(
+            "{access-token}",
+            "{appsecret}"
+    );
+    public static void main(String[] args)
+    {
+        AdAccount account = new AdAccount("act_{{adaccount-id}}", context);
+        try {
+            APINodeList<Campaign> campaigns = account.getCampaigns().requestAllFields().execute();
+            for(Campaign campaign : campaigns) {
+                System.out.println(campaign.getFieldName());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }}
+    npm install -g npm
+    npm install --save facebook-nodejs-business-sdk
+    
